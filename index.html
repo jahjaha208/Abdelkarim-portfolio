@@ -1,0 +1,709 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Abdelkarim Jahjah – Portfolio</title>
+  
+  <!-- Initialisation du thème -->
+  <script>
+    // Charger le thème depuis localStorage ou utiliser 'dark' par défaut
+    const savedTheme = localStorage.getItem('portfolio-theme') || 'dark';
+    document.documentElement.setAttribute('data-theme', savedTheme);
+  </script>
+  <meta name="description" content="Portfolio d'Abdelkarim Jahjah, étudiant en BUT Informatique et développeur Full Stack spécialisé en C#, WPF, SQL, PHP et Laravel.">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Tailwind -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- DaisyUI -->
+  <link href="https://cdn.jsdelivr.net/npm/daisyui@4.12.10/dist/full.min.css" rel="stylesheet" type="text/css" />
+
+  <!-- Tailwind config -->
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'system-ui', 'sans-serif'],
+            display: ['Space Grotesk', 'system-ui', 'sans-serif'],
+          },
+          colors: {
+            neon: '#22d3ee',
+            neonPink: '#fb37ff',
+            darkBg: '#020617',
+          },
+          boxShadow: {
+            'neon-soft': '0 0 40px rgba(34,211,238,0.35)',
+          },
+        },
+      },
+    };
+  </script>
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="min-h-screen">
+  <!-- Halo de fond -->
+  <div class="halo"></div>
+
+  <!-- NAVBAR -->
+
+
+
+  <nav class="navbar sticky top-0 z-30 glass border-b border-base-content/20">
+  <div class="container mx-auto px-4">
+    <!-- Marque -->
+    <div class="flex-1 min-w-0">
+      <a href="#hero" class="btn btn-ghost normal-case text-xl font-display font-bold tracking-tight px-0">
+        <span class="bg-gradient-to-r from-neon to-neonPink bg-clip-text text-transparent">AJ</span>
+        <span class="ml-2 hidden sm:inline truncate" data-i18n="nav_subtitle">/ Développeur Full Stack</span>
+      </a>
+    </div>
+
+    <!-- Menu desktop -->
+    <div class="flex-none hidden md:flex items-center gap-2">
+      <a href="#hero" class="btn btn-ghost btn-xs md:btn-sm" data-i18n="nav_home">Accueil</a>
+      <a href="#about" class="btn btn-ghost btn-xs md:btn-sm" data-i18n="nav_about">À propos</a>
+      <a href="#skills" class="btn btn-ghost btn-xs md:btn-sm" data-i18n="nav_skills">Compétences</a>
+      <a href="#projects" class="btn btn-ghost btn-xs md:btn-sm" data-i18n="nav_projects">Projets</a>
+      <a href="#experience" class="btn btn-ghost btn-xs md:btn-sm" data-i18n="nav_experience">Exp. & Form.</a>
+      <a href="#contact" class="btn btn-primary btn-xs md:btn-sm shadow-neon-soft" data-i18n="nav_contact">Contact</a>
+
+      <!-- Lang switcher -->
+      <div class="dropdown dropdown-end">
+        <label tabindex="0" class="btn btn-ghost btn-xs md:btn-sm gap-1">
+          🌐 <span id="current-lang-label">FR</span>
+        </label>
+        <ul tabindex="0" class="dropdown-content menu p-2 shadow glass rounded-box w-36">
+          <li><button class="btn btn-ghost btn-xs justify-start lang-switch" data-lang="fr">🇫🇷 Français</button></li>
+          <li><button class="btn btn-ghost btn-xs justify-start lang-switch" data-lang="en">🇬🇧 English</button></li>
+          <li><button class="btn btn-ghost btn-xs justify-start lang-switch" data-lang="ar">🇦🇪 العربية</button></li>
+        </ul>
+      </div>
+
+      <!-- Theme switcher -->
+      <div class="dropdown dropdown-end">
+        <label tabindex="0" class="btn btn-ghost btn-xs md:btn-sm gap-1">
+          🎨 <span data-i18n="theme_label">Thème</span>
+        </label>
+        <ul tabindex="0" class="dropdown-content menu p-2 shadow glass rounded-box w-44">
+          <li><button class="btn btn-ghost btn-xs theme-switch justify-start" data-theme-option="light">Light</button></li>
+          <li><button class="btn btn-ghost btn-xs theme-switch justify-start" data-theme-option="dark">Dark</button></li>
+          <li><button class="btn btn-ghost btn-xs theme-switch justify-start" data-theme-option="cyberpunk">Cyberpunk</button></li>
+          <li><button class="btn btn-ghost btn-xs theme-switch justify-start" data-theme-option="synthwave">Synthwave</button></li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Menu mobile -->
+<div class="flex-none md:hidden">
+  <div class="drawer">
+    <input id="mobile-drawer" type="checkbox" class="drawer-toggle" />
+    <div class="drawer-content">
+      <label for="mobile-drawer" class="btn btn-ghost btn-square btn-sm sm:btn-md">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+      </label>
+    </div>
+
+    <div class="drawer-side z-[90]">
+      <!-- Overlay opaque -->
+      <label for="mobile-drawer" class="drawer-overlay bg-black/80"></label>
+
+      <div class="bg-base-100 text-base-content border-r border-slate-700/60 shadow-2xl w-[78vw] max-w-sm min-h-full flex flex-col">
+        <!-- Header -->
+        <div class="flex items-center justify-between px-4 py-3 border-b border-slate-800/60">
+          <div>
+            <p class="text-xs uppercase tracking-[0.18em] text-base-content/70">Menu</p>
+            <p class="text-sm font-semibold text-base-content/90">Navigation & préférences</p>
+          </div>
+          <label for="mobile-drawer" class="btn btn-ghost btn-square btn-xs">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </label>
+        </div>
+
+        <!-- Contenu -->
+        <ul class="menu menu-sm p-4 gap-3 flex-1 overflow-y-auto">
+          <li class="menu-title text-xs uppercase tracking-[0.2em] text-slate-500">Navigation</li>
+          <li><a href="#hero" class="font-semibold" data-i18n="nav_home">Accueil</a></li>
+          <li><a href="#about" data-i18n="nav_about">À propos</a></li>
+          <li><a href="#skills" data-i18n="nav_skills">Compétences</a></li>
+          <li><a href="#projects" data-i18n="nav_projects">Projets</a></li>
+          <li><a href="#experience" data-i18n="nav_experience">Exp. & Form.</a></li>
+          <li><a href="#contact" class="text-neon font-semibold" data-i18n="nav_contact">Contact</a></li>
+
+          <li class="divider my-1"></li>
+
+          <li class="menu-title flex items-center justify-between text-slate-500">
+            <span>Langues</span>
+            <span class="badge badge-outline border-neon text-neon" id="current-lang-label">FR</span>
+          </li>
+          <li><button class="lang-switch gap-2" data-lang="fr">🇫🇷 Français</button></li>
+          <li><button class="lang-switch gap-2" data-lang="en">🇬🇧 English</button></li>
+          <li><button class="lang-switch gap-2" data-lang="ar">🇦🇪 العربية</button></li>
+
+          <li class="divider my-1"></li>
+
+          <li class="menu-title text-slate-500">Thème</li>
+          <li>
+            <div class="grid grid-cols-2 gap-2">
+              <button class="btn btn-ghost btn-xs theme-switch justify-start" data-theme-option="light">Light</button>
+              <button class="btn btn-ghost btn-xs theme-switch justify-start" data-theme-option="dark">Dark</button>
+              <button class="btn btn-ghost btn-xs theme-switch justify-start" data-theme-option="cyberpunk">Cyberpunk</button>
+              <button class="btn btn-ghost btn-xs theme-switch justify-start" data-theme-option="synthwave">Synthwave</button>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+  </div>
+</nav>
+
+  <!-- HERO -->
+  <section id="hero" class="py-20 md:py-28">
+    <div class="container mx-auto px-4 flex flex-col lg:flex-row items-center gap-12">
+      <!-- Texte -->
+      <div class="flex-1 space-y-6">
+  
+        <span
+  class="badge badge-outline border-neon text-neon tracking-wide hero-badge inline-flex items-center whitespace-normal break-words max-w-full text-xs sm:text-sm px-3 py-1 leading-tight"
+  data-i18n="hero_badge">
+Développeur Full Stack Junior
+</span>
+
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight font-display">
+          <span data-i18n="hero_title_line1">Bonjour, je suis</span>
+          <span class="block bg-gradient-to-r from-neon to-neonPink bg-clip-text text-transparent">
+            Abdelkarim Jahjah
+          </span>
+        </h1>
+        <p class="text-base-content/80 text-base md:text-lg max-w-xl" data-i18n="hero_subtitle">
+          Étudiant en 2ᵉ année de BUT Informatique à l’IUT d’Annecy, spécialisé en développement logiciel,
+          bases de données et développement web. Je conçois des applications robustes, ergonomiques et performantes.
+        </p>
+
+        <div class="flex flex-wrap gap-4">
+          <a href="#projects" class="btn btn-primary shadow-neon-soft" data-i18n="hero_cta_projects">
+            Voir mes projets
+          </a>
+          <a href="#contact" class="btn btn-outline border-neon text-neon hover:bg-neon/10" data-i18n="hero_cta_contact">
+            Me contacter
+          </a>
+        </div>
+
+        <!-- Infos clés -->
+        <div class="grid sm:grid-cols-3 gap-4 text-sm text-slate-300 mt-4">
+          <div class="glass rounded-2xl p-3">
+            <p class="text-xs text-slate-400" data-i18n="hero_info_location_label">Localisation</p>
+            <p>74100, Annemasse – France</p>
+          </div>
+          <div class="glass rounded-2xl p-3">
+            <p class="text-xs text-slate-400" data-i18n="hero_info_stage_label">Stage</p>
+            <p data-i18n="hero_info_stage_text">Disponible du 6 avril au 28 juin 2026 (10 semaines)</p>
+          </div>
+          <div class="glass rounded-2xl p-3">
+            <p class="text-xs text-slate-400" data-i18n="hero_info_lang_label">Langues</p>
+            <p data-i18n="hero_info_lang_text">Français, Arabe, Anglais (B1)</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Carte profil -->
+      <div class="flex-1 flex justify-center">
+        <div class="glass rounded-3xl p-6 md:p-8 max-w-sm w-full shadow-neon-soft">
+          <div class="avatar flex justify-center mb-6">
+            <div class="w-28 rounded-full ring ring-neon ring-offset-base-100 ring-offset-2">
+              <div class="bg-slate-900 flex items-center justify-center text-3xl font-display">
+                AJ
+              </div>
+            </div>
+          </div>
+          <h2 class="text-xl font-semibold text-center mb-1">Abdelkarim Jahjah</h2>
+          <p class="text-sm text-center text-slate-400 mb-4" data-i18n="hero_role">
+            Étudiant BUT Informatique · Développeur Full Stack
+          </p>
+
+          <div class="divider my-4"></div>
+
+          <ul class="space-y-2 text-sm text-slate-300">
+            <li class="flex items-center justify-between">
+              <span class="text-slate-400" data-i18n="hero_card_email">Email</span>
+              <a href="mailto:jahjahabdelkarim26@gmail.com" class="link link-hover">
+                jahjahabdelkarim26@gmail.com
+              </a>
+            </li>
+            <li class="flex items-center justify-between">
+              <span class="text-slate-400" data-i18n="hero_card_phone">Téléphone</span>
+              <a href="tel:+33768618405" class="link link-hover">
+                +33 7 68 61 84 05
+              </a>
+            </li>
+            <li class="flex items-center justify-between">
+              <span class="text-slate-400" data-i18n="hero_card_permit">Permis</span>
+              <span data-i18n="hero_card_permit_text">Permis de conduire</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- À PROPOS -->
+  <section id="about" class="py-16">
+    <div class="container mx-auto px-4">
+      <div class="grid lg:grid-cols-2 gap-10 items-start">
+        <div>
+          <h2 class="text-2xl md:text-3xl font-display font-bold mb-4" data-i18n="about_title">
+            À propos de moi
+          </h2>
+          <p class="text-slate-300 mb-4" data-i18n="about_p1">
+            Étudiant en 2ᵉ année de BUT Informatique à l’IUT d’Annecy, je me spécialise en développement logiciel,
+            administration de bases de données et développement web. Je suis passionné par la conception de solutions
+            robustes, ergonomiques et maintenables.
+          </p>
+          <p class="text-slate-400 mb-4" data-i18n="about_p2">
+            Je maîtrise les concepts de programmation orientée objet, les architectures logicielles modernes
+            (notamment en C#/.NET et WPF) ainsi que la modélisation UML/Merise pour transformer des besoins métiers
+            en applications concrètes.
+          </p>
+          <p class="text-slate-400" data-i18n="about_p3">
+            Je recherche un stage de 10 semaines à partir du 6 avril 2026 pour mettre mes compétences au service
+            d’une équipe, contribuer à des projets concrets et continuer à progresser dans un environnement professionnel.
+          </p>
+        </div>
+
+        <div class="space-y-4">
+          <div class="card glass border border-slate-700/60">
+            <div class="card-body p-5">
+              <h3 class="card-title text-base md:text-lg" data-i18n="about_card1_title">
+                Ce que je peux apporter
+              </h3>
+              <p class="text-sm text-slate-300" data-i18n="about_card1_text">
+                • Rigueur dans la conception et la qualité du code<br>
+                • Bon niveau en SQL et gestion des données<br>
+                • Capacité à travailler en équipe sur des projets académiques ou professionnels<br>
+                • Curiosité, sérieux et envie d’apprendre
+              </p>
+            </div>
+          </div>
+          <div class="card glass border border-slate-700/60">
+            <div class="card-body p-5">
+              <h3 class="card-title text-base md:text-lg" data-i18n="about_card2_title">
+                Soft skills
+              </h3>
+              <p class="text-sm text-slate-300" data-i18n="about_card2_text">
+                Gestion du temps, sens de l’organisation, autonomie, fiabilité, ponctualité,
+                esprit d’équipe et excellente capacité d’adaptation.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- COMPÉTENCES -->
+  <section id="skills" class="py-16 bg-base-100/10">
+    <div class="container mx-auto px-4">
+      <h2 class="text-2xl md:text-3xl font-display font-bold mb-8 text-center" data-i18n="skills_title">
+        Compétences techniques
+      </h2>
+
+      <div class="grid md:grid-cols-3 gap-6">
+        <!-- Dev logiciel -->
+        <div class="card glass border border-slate-700/60">
+          <div class="card-body">
+            <h3 class="card-title text-lg mb-2" data-i18n="skills_dev_title">Développement logiciel</h3>
+            <ul class="text-sm text-slate-300 space-y-1">
+              <li>C#, .NET</li>
+              <li>WPF (Pattern MVVM)</li>
+              <li>Programmation orientée objet</li>
+              <li>UML / Merise</li>
+              <li>Architecture logicielle</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- DB -->
+        <div class="card glass border border-slate-700/60">
+          <div class="card-body">
+            <h3 class="card-title text-lg mb-2" data-i18n="skills_db_title">Bases de données</h3>
+            <ul class="text-sm text-slate-300 space-y-1">
+              <li>SQL avancé</li>
+              <li>PostgreSQL</li>
+              <li>SQLite</li>
+              <li>Administration & optimisation</li>
+              <li>Procédures stockées, transactions</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Web -->
+        <div class="card glass border border-slate-700/60">
+          <div class="card-body">
+            <h3 class="card-title text-lg mb-2" data-i18n="skills_web_title">Développement web</h3>
+            <ul class="text-sm text-slate-300 space-y-1">
+              <li>HTML5 / CSS3</li>
+              <li>JavaScript</li>
+              <li>PHP</li>
+              <li>Laravel (CRUD, sécurité, gestion utilisateurs)</li>
+              <li>Responsive design</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Outils -->
+      <div class="mt-10 grid md:grid-cols-2 gap-6">
+        <div class="card glass border border-slate-700/60">
+          <div class="card-body">
+            <h3 class="card-title text-lg mb-2" data-i18n="skills_tools_title">Outils & systèmes</h3>
+            <ul class="text-sm text-slate-300 space-y-1">
+              <li>Linux / Debian (VirtualBox)</li>
+              <li>Virtualisation (VirtualBox)</li>
+              <li>Power BI</li>
+              <li>Git (bonnes pratiques)</li>
+            </ul>
+          </div>
+        </div>
+        <div class="card glass border border-slate-700/60">
+          <div class="card-body">
+            <h3 class="card-title text-lg mb-2" data-i18n="skills_interest_title">Centres d’intérêt</h3>
+            <ul class="text-sm text-slate-300 space-y-1">
+              <li data-i18n="skills_interest_1">Randonnée</li>
+              <li data-i18n="skills_interest_2">Musculation</li>
+              <li data-i18n="skills_interest_3">Voyage (10+ pays visités)</li>
+              <li data-i18n="skills_interest_4">Nouvelles technologies</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJETS -->
+  <section id="projects" class="py-16">
+    <div class="container mx-auto px-4">
+      <div class="flex items-center justify-between mb-6">
+        <h2 class="text-2xl md:text-3xl font-display font-bold" data-i18n="projects_title">
+          Projets sélectionnés
+        </h2>
+        <span class="text-xs text-slate-400 uppercase tracking-[0.2em] hidden sm:inline">
+          C# • WPF • SQL • Laravel
+        </span>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-6">
+        <!-- WPF parc auto -->
+        <div class="card glass border border-base-content/20 hover:shadow-neon-soft transition">
+          <div class="card-body">
+            <h3 class="card-title text-base md:text-lg" data-i18n="proj1_title">
+              Application WPF – Gestion d’un parc automobile
+            </h3>
+            <p class="text-sm text-slate-300" data-i18n="proj1_text">
+              Application desktop complète avec CRUD, filtres, interface intuitive et base de données SQLite.
+              Architecture MVVM, focus sur performance et ergonomie.
+            </p>
+            <div class="mt-3 flex flex-wrap gap-2 text-xs">
+              <span class="badge badge-outline border-slate-600">C#</span>
+              <span class="badge badge-outline border-slate-600">.NET</span>
+              <span class="badge badge-outline border-slate-600">WPF</span>
+              <span class="badge badge-outline border-slate-600">MVVM</span>
+              <span class="badge badge-outline border-slate-600">SQLite</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- SAE 2.01 -->
+        <div class="card glass border border-base-content/20 hover:shadow-neon-soft transition">
+          <div class="card-body">
+            <h3 class="card-title text-base md:text-lg" data-i18n="proj2_title">
+              SAE 2.01 – ESF : Système d’inscription aux cours
+            </h3>
+            <p class="text-sm text-slate-300" data-i18n="proj2_text">
+              Projet académique centré sur la modélisation UML/Merise et le développement WPF ergonomique
+              pour gérer les inscriptions aux cours.
+            </p>
+            <div class="mt-3 flex flex-wrap gap-2 text-xs">
+              <span class="badge badge-outline border-slate-600">C#</span>
+              <span class="badge badge-outline border-slate-600">WPF</span>
+              <span class="badge badge-outline border-slate-600">UML</span>
+              <span class="badge badge-outline border-slate-600">Merise</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Laravel projet -->
+        <div class="card glass border border-base-content/20 hover:shadow-neon-soft transition">
+          <div class="card-body">
+            <h3 class="card-title text-base md:text-lg" data-i18n="proj3_title">
+              Application Web Laravel – Gestion utilisateurs & base de données
+            </h3>
+            <p class="text-sm text-slate-300" data-i18n="proj3_text">
+              Projet en équipe (6 personnes) : application web avec gestion des utilisateurs, sécurité,
+              base de données administrée et architecture MVC.
+            </p>
+            <div class="mt-3 flex flex-wrap gap-2 text-xs">
+              <span class="badge badge-outline border-slate-600">Laravel</span>
+              <span class="badge badge-outline border-slate-600">PHP</span>
+              <span class="badge badge-outline border-slate-600">SQL</span>
+              <span class="badge badge-outline border-slate-600">HTML/CSS</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Déploiement web -->
+        <div class="card glass border border-slate-700/60 hover:shadow-neon-soft transition md:col-span-2">
+          <div class="card-body">
+            <h3 class="card-title text-base md:text-lg" data-i18n="proj4_title">
+              Déploiement d’une application web
+            </h3>
+            <p class="text-sm text-slate-300" data-i18n="proj4_text">
+              Projet en binôme : conception d’un site web répondant aux besoins d’un client fictif,
+              création d’une base de données fiable et sécurisée, déploiement complet.
+            </p>
+            <div class="mt-3 flex flex-wrap gap-2 text-xs">
+              <span class="badge badge-outline border-slate-600">HTML</span>
+              <span class="badge badge-outline border-slate-600">CSS</span>
+              <span class="badge badge-outline border-slate-600">JavaScript</span>
+              <span class="badge badge-outline border-slate-600">PHP</span>
+              <span class="badge badge-outline border-slate-600">SQL</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Loxam -->
+        <div class="card glass border border-base-content/20 hover:shadow-neon-soft transition">
+          <div class="card-body">
+            <h3 class="card-title text-base md:text-lg" data-i18n="proj5_title">
+              Gestion Loxam – Base de données PostgreSQL
+            </h3>
+            <p class="text-sm text-slate-300" data-i18n="proj5_text">
+              Conception d’un modèle relationnel complet, écriture de requêtes SQL complexes,
+              procédures stockées, triggers et contraintes avec PostgreSQL.
+            </p>
+            <div class="mt-3 flex flex-wrap gap-2 text-xs">
+              <span class="badge badge-outline border-slate-600">PostgreSQL</span>
+              <span class="badge badge-outline border-slate-600">SQL avancé</span>
+              <span class="badge badge-outline border-slate-600">Modélisation</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPÉRIENCE & FORMATION -->
+  <section id="experience" class="py-16 bg-base-100/10">
+    <div class="container mx-auto px-4">
+      <h2 class="text-2xl md:text-3xl font-display font-bold mb-8 text-center" data-i18n="exp_title">
+        Expérience & Formation
+      </h2>
+
+      <div class="grid md:grid-cols-2 gap-8">
+        <!-- Expérience (principalement projets) -->
+        <div class="space-y-4">
+          <h3 class="text-xl font-semibold mb-2 flex items-center gap-2">
+            <span class="w-2 h-2 rounded-full bg-neon"></span>
+            <span data-i18n="exp_exp_title">Expérience (projets et académique)</span>
+          </h3>
+
+          <div class="card glass border border-slate-700/60">
+            <div class="card-body p-5">
+              <div class="flex items-center justify-between mb-1">
+                <h4 class="font-semibold text-base md:text-lg" data-i18n="exp_exp1_title">
+                  Projets de développement logiciel & web
+                </h4>
+                <span class="text-xs text-slate-400">2023 – 2025</span>
+              </div>
+              <p class="text-sm text-slate-300" data-i18n="exp_exp1_text">
+                Réalisation de plusieurs projets académiques en C#, WPF, SQL et Laravel : gestion de parc automobile,
+                système d’inscription aux cours, application web collaborative. Travail en équipe, gestion du code
+                avec Git et attention portée à la qualité du code.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Formation -->
+        <div class="space-y-4">
+          <h3 class="text-xl font-semibold mb-2 flex items-center gap-2">
+            <span class="w-2 h-2 rounded-full bg-neonPink"></span>
+            <span data-i18n="exp_edu_title">Formation</span>
+          </h3>
+
+          <!-- BUT -->
+          <div class="card glass border border-slate-700/60">
+            <div class="card-body p-5">
+              <div class="flex items-center justify-between mb-1">
+                <h4 class="font-semibold text-base md:text-lg" data-i18n="exp_edu1_title">
+                  BUT Informatique (2024 – 2027)
+                </h4>
+                <span class="text-xs text-slate-400">IUT Annecy – Univ. Savoie Mont Blanc</span>
+              </div>
+              <p class="text-sm text-slate-300" data-i18n="exp_edu1_text">
+                Spécialisation en développement, gestion de données et systèmes. Approfondissement de la
+                programmation, des bases de données, de l’architecture logicielle et des méthodes de projet.
+              </p>
+            </div>
+          </div>
+
+          <!-- PASS santé -->
+          <div class="card glass border border-slate-700/60">
+            <div class="card-body p-5">
+              <h4 class="font-semibold text-base md:text-lg" data-i18n="exp_edu2_title">
+                Parcours d’accès spécifique en santé (2024 – 2025)
+              </h4>
+              <p class="text-sm text-slate-300" data-i18n="exp_edu2_text">
+                Université Grenoble Alpes. Développement de la rigueur scientifique, de la capacité d’analyse
+                et de la gestion du travail intensif.
+              </p>
+            </div>
+          </div>
+
+          <!-- Bac -->
+          <div class="card glass border border-slate-700/60">
+            <div class="card-body p-5">
+              <h4 class="font-semibold text-base md:text-lg" data-i18n="exp_edu3_title">
+                Baccalauréat général – Mathématiques & Physique-Chimie (2020 – 2023)
+              </h4>
+              <p class="text-sm text-slate-300" data-i18n="exp_edu3_text">
+                Lycée des Glières – Annemasse. Renforcement des bases scientifiques et analytiques.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Références -->
+      <div class="mt-10">
+        <h3 class="text-xl font-semibold mb-4" data-i18n="ref_title">Références</h3>
+        <div class="grid md:grid-cols-2 gap-4">
+          <div class="card glass border border-slate-700/60">
+            <div class="card-body p-5 text-sm text-slate-300">
+              <p><span class="font-semibold">Pascal Colin</span> – Professeur SQL</p>
+              <a href="mailto:pascal.colin@etu.univ-smb.fr" class="link link-hover">
+                pascal.colin@etu.univ-smb.fr
+              </a>
+            </div>
+          </div>
+          <div class="card glass border border-slate-700/60">
+            <div class="card-body p-5 text-sm text-slate-300">
+              <p><span class="font-semibold">Luc Damas</span> – Professeur de Programmation</p>
+              <a href="mailto:luc.damas@etu.univ-smb.fr" class="link link-hover">
+                luc.damas@etu.univ-smb.fr
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="py-16">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto grid md:grid-cols-2 gap-8 items-start">
+        <div class="space-y-4">
+          <h2 class="text-2xl md:text-3xl font-display font-bold" data-i18n="contact_title">
+            Restons en contact
+          </h2>
+          <p class="text-slate-300" data-i18n="contact_text">
+            Vous avez un projet, une opportunité de stage ou une mission à proposer ?
+            N’hésitez pas à me contacter, je vous répondrai avec plaisir.
+          </p>
+
+          <div class="space-y-3 text-sm">
+            <div class="flex items-center gap-3">
+              <span class="badge badge-outline border-neon text-neon" data-i18n="contact_email_label">Email</span>
+              <a href="mailto:jahjahabdelkarim26@gmail.com" class="link link-hover text-slate-200">
+                jahjahabdelkarim26@gmail.com
+              </a>
+            </div>
+            <div class="flex items-center gap-3">
+              <span class="badge badge-outline border-neon text-neon" data-i18n="contact_phone_label">Téléphone</span>
+              <a href="tel:+33768618405" class="link link-hover text-slate-200">
+                +33 7 68 61 84 05
+              </a>
+            </div>
+            <div class="flex items-center gap-3">
+              <span class="badge badge-outline border-neon text-neon">LinkedIn</span>
+              <span class="text-slate-400 text-xs" data-i18n="contact_linkedin_hint">
+                (ajouter le lien LinkedIn quand disponible)
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Form -->
+        <form class="card glass border border-slate-700/60">
+          <div class="card-body space-y-3">
+            <h3 class="card-title text-lg mb-2" data-i18n="contact_form_title">
+              Envoyez-moi un message
+            </h3>
+            <div class="form-control">
+              <label class="label">
+                <span class="label-text text-slate-200" data-i18n="contact_form_name_label">Nom complet</span>
+              </label>
+              <input type="text" placeholder="Votre nom" class="input input-bordered bg-base-100/60" />
+            </div>
+            <div class="form-control">
+              <label class="label">
+                <span class="label-text text-slate-200" data-i18n="contact_form_email_label">Email</span>
+              </label>
+              <input type="email" placeholder="vous@example.com" class="input input-bordered bg-base-100/60" />
+            </div>
+            <div class="form-control">
+              <label class="label">
+                <span class="label-text text-slate-200" data-i18n="contact_form_subject_label">Sujet</span>
+              </label>
+              <input type="text" placeholder="Objet du message" class="input input-bordered bg-base-100/60" />
+            </div>
+            <div class="form-control">
+              <label class="label">
+                <span class="label-text text-slate-200" data-i18n="contact_form_message_label">Message</span>
+              </label>
+              <textarea class="textarea textarea-bordered bg-base-100/60" rows="4" placeholder="Décrivez votre besoin..."></textarea>
+            </div>
+            <div class="form-control mt-4">
+              <button class="btn btn-primary w-full shadow-neon-soft" type="button" data-i18n="contact_form_submit">
+                Envoyer le message
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="border-t border-slate-800 py-6 text-sm">
+    <div class="container mx-auto px-4 flex flex-col md:flex-row items-center justify-between gap-3">
+      <p class="text-slate-500" data-i18n="footer_text">
+        © 2025 Abdelkarim Jahjah – Tous droits réservés.
+      </p>
+      <div class="flex gap-3 text-slate-500">
+        <a href="#hero" class="link link-hover" data-i18n="footer_backtotop">Haut de page</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- JS : Traductions + Thèmes -->
+  <script src="script.js"></script>
+</body>
+</html>

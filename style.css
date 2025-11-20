@@ -1,0 +1,45 @@
+    body {
+      font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background-color: hsl(var(--b1));
+      color: hsl(var(--bc));
+    }
+    
+    h1, h2, h3, .font-display {
+      font-family: 'Space Grotesk', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    }
+    
+    .glass {
+      background: radial-gradient(circle at top left, rgba(var(--p) / 0.12), transparent 55%),
+                  radial-gradient(circle at bottom right, rgba(var(--s) / 0.12), transparent 60%);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      border: 1px solid hsl(var(--bc) / 0.2);
+    }
+    
+    .halo {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: -1;
+      background:
+        radial-gradient(circle at 10% 20%, rgba(var(--p) / 0.16), transparent 55%),
+        radial-gradient(circle at 80% 10%, rgba(var(--b3) / 0.12), transparent 55%),
+        radial-gradient(circle at 80% 80%, rgba(var(--s) / 0.16), transparent 55%);
+    }
+    
+    /* Ajustements pour le thème clair */
+    [data-theme="light"] .glass {
+      background: radial-gradient(circle at top left, rgba(var(--p) / 0.08), transparent 55%),
+                  radial-gradient(circle at bottom right, rgba(var(--s) / 0.08), transparent 60%);
+      border-color: hsl(var(--bc) / 0.1);
+    }
+    html {
+      scroll-behavior: smooth;
+    }
+    
+    /* Force le badge hero à passer à la ligne sur petits écrans (badge DaisyUI = nowrap par défaut) */
+    .hero-badge {
+      white-space: normal !important;
+      word-break: break-word;
+      line-height: 1.5;
+    }

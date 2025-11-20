@@ -9,7 +9,9 @@
         nav_experience: "Expérience & Formation",
         nav_contact: "Contact",
         theme_label: "Thème",
-
+proj_game_title: "Jeu WPF – Mini-jeu interactif en C#",
+    proj_game_text: "Projet académique en WPF : développement d’un mini-jeu interactif avec gestion des événements, animations, logique de jeu et interface ergonomique. Architecture MVVM avec XAML et C# pour un gameplay fluide et structuré.",
+    proj_game_demo: "Voir la démo vidéo",
         hero_badge: "Développeur Full Stack",
         hero_title_line1: "Bonjour, je suis",
         hero_subtitle: "Étudiant en 2ᵉ année de BUT Informatique à l’IUT d’Annecy, spécialisé en développement logiciel, bases de données et développement web. Je conçois des applications robustes, ergonomiques et performantes.",
@@ -96,7 +98,9 @@
         nav_experience: "Experience & Education",
         nav_contact: "Contact",
         theme_label: "Theme",
-
+        proj_game_title: "WPF Game – Interactive Mini-Game in C#",
+        proj_game_text: "Academic project in WPF: development of an interactive mini-game with event handling, animations, game logic, and an ergonomic interface. Built with the MVVM architecture using XAML and C# for a smooth and structured gameplay experience.",
+        proj_game_demo: "Watch demo video",
         hero_badge: "JuniorFull Stack Developer",
         hero_title_line1: "Hello, I am",
         hero_subtitle: "Second-year BUT Computer Science student at IUT Annecy, specializing in software development, databases and web development. I design robust, ergonomic and high-performance applications.",
@@ -183,7 +187,9 @@
   nav_experience: "الخبرات والدراسة",
   nav_contact: "تواصل معي",
   theme_label: "السمة",
-
+  proj_game_title: "لعبة WPF – لعبة تفاعلية مصغّرة بـ C#",
+  proj_game_text: "مشروع أكاديمي باستخدام WPF: تطوير لعبة تفاعلية مصغّرة مع إدارة الأحداث، والرسوم المتحركة، ومنطق اللعبة، وواجهة استخدام مريحة. يعتمد على بنية MVVM باستخدام XAML و C# للحصول على تجربة لعب سلسة ومنظمة.",
+  proj_game_demo: "مشاهدة الفيديو",
   hero_badge: "مطور Full Stack مبتدئ",
   hero_title_line1: "مرحباً، أنا",
   hero_subtitle: "طالب في السنة الثانية من BUT علوم الحاسوب في IUT Annecy، متخصص في تطوير البرمجيات، قواعد البيانات وتطوير الويب. أصمّم تطبيقات قوية، مريحة وسهلة الاستخدام.",

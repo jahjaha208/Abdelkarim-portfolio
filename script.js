@@ -269,6 +269,22 @@ proj_game_title: "Jeu WPF – Mini-jeu interactif en C#",
 
     };
 
+    const cvUrl = "assets/A4%20CV%20%C3%A9tudiant%20simple%20brun%20et%20blanc.pdf";
+
+    function openCvPreview() {
+      const modal = document.getElementById("cv-modal");
+      if (modal && typeof modal.showModal === "function") {
+        const frame = document.getElementById("cv-frame");
+        if (frame && !frame.dataset.loaded) {
+          frame.src = cvUrl;
+          frame.dataset.loaded = "true";
+        }
+        modal.showModal();
+      } else {
+        window.open(cvUrl, "_blank");
+      }
+    }
+
     function applyTranslations(lang) {
       const dict = translations[lang] || translations.fr;
       document.querySelectorAll("[data-i18n]").forEach((el) => {
@@ -308,6 +324,10 @@ proj_game_title: "Jeu WPF – Mini-jeu interactif en C#",
           const theme = btn.getAttribute("data-theme-option");
           setTheme(theme);
         });
+      });
+
+      document.querySelectorAll(".open-cv-preview").forEach((btn) => {
+        btn.addEventListener("click", openCvPreview);
       });
     })();
 // Mettre à jour l'indicateur de thème

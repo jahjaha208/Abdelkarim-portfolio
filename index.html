@@ -74,9 +74,9 @@
       <a href="#projects" class="btn btn-ghost btn-xs md:btn-sm" data-i18n="nav_projects">Projets</a>
       <a href="#experience" class="btn btn-ghost btn-xs md:btn-sm" data-i18n="nav_experience">Exp. & Form.</a>
       <a href="#contact" class="btn btn-primary btn-xs md:btn-sm shadow-neon-soft" data-i18n="nav_contact">Contact</a>
-      <a href="assets/A4 CV étudiant simple brun et blanc.pdf" download class="btn btn-secondary btn-outline border-neon text-neon hover:bg-neon/10">
+      <button type="button" class="btn btn-secondary btn-outline border-neon text-neon hover:bg-neon/10 open-cv-preview">
           Télécharger mon CV
-      </a>
+      </button>
       <!-- Lang switcher -->
       <div class="dropdown dropdown-end">
         <label tabindex="0" class="btn btn-ghost btn-xs md:btn-sm gap-1">
@@ -142,9 +142,10 @@
           <li><a href="#projects" data-i18n="nav_projects">Projets</a></li>
           <li><a href="#experience" data-i18n="nav_experience">Exp. & Form.</a></li>
           <li><a href="#contact" class="text-neon font-semibold" data-i18n="nav_contact">Contact</a></li>
-          <li><a href="assets/A4 CV étudiant simple brun et blanc.pdf" download class="btn btn-secondary btn-outline border-neon text-neon hover:bg-neon/10">
+          <li>
+            <button type="button" class="btn btn-secondary btn-outline border-neon text-neon hover:bg-neon/10 w-full open-cv-preview">
     Télécharger mon CV
-  </a></li>  
+  </button></li>  
           <li class="divider my-1"></li>
 
           <li class="menu-title flex items-center justify-between text-slate-500">
@@ -744,6 +745,36 @@
       </div>
     </div>
   </section>
+
+  <!-- CV Preview Modal -->
+  <dialog id="cv-modal" class="modal">
+    <div class="modal-box glass max-w-5xl border border-slate-700/70">
+      <form method="dialog" class="absolute right-3 top-3">
+        <button class="btn btn-sm btn-circle">✕</button>
+      </form>
+      <div class="flex items-center gap-2 mb-2">
+        <span class="badge badge-outline border-neon text-neon">CV</span>
+        <h3 class="font-display text-xl font-semibold">Aperçu du CV</h3>
+      </div>
+      <p class="text-sm text-slate-400 mb-3">Prévisualisez le PDF. Sur mobile, utilisez le pinch-zoom ou ouvrez dans un nouvel onglet.</p>
+      <div class="rounded-xl overflow-hidden border border-slate-700/60 bg-base-100">
+        <iframe
+          id="cv-frame"
+          title="Aperçu du CV"
+          class="w-full h-[70vh] sm:h-[65vh]"
+          allowfullscreen
+          loading="lazy"
+        ></iframe>
+      </div>
+      <div class="mt-4 flex flex-col sm:flex-row gap-3">
+        <a href="assets/A4 CV étudiant simple brun et blanc.pdf" download class="btn btn-primary shadow-neon-soft">Télécharger le PDF</a>
+        <a href="assets/A4 CV étudiant simple brun et blanc.pdf" target="_blank" rel="noopener noreferrer" class="btn btn-ghost btn-outline border-neon text-neon hover:bg-neon/10">Ouvrir dans un onglet</a>
+      </div>
+    </div>
+    <form method="dialog" class="modal-backdrop">
+      <button>Fermer</button>
+    </form>
+  </dialog>
 
   <!-- FOOTER -->
   <footer class="border-t border-slate-800 py-6 text-sm">
